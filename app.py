@@ -26,72 +26,124 @@ API_URL = "https://taxifare-321391081145.europe-west1.run.app/predict"
 st.markdown(
     """
     <style>
+    /* Fond général de l'application */
     .stApp {
-        background: linear-gradient(135deg, #fff8e7 0%, #f7fbff 45%, #f4f0ff 100%);
+        background: linear-gradient(135deg, #dff3ff 0%, #eef9ff 45%, #cfeeff 100%);
+        color: #111827;
     }
 
+    /* Titre principal */
     .main-title {
         font-size: 2.8rem;
         font-weight: 800;
-        color: #2d2a32;
+        color: #111827;
         margin-bottom: 0.2rem;
     }
 
+    /* Sous-titre */
     .subtitle {
         font-size: 1.1rem;
-        color: #5f5b66;
+        color: #1f2937;
         margin-bottom: 1.5rem;
     }
 
+    /* Cartes principales */
     .soft-card {
-        background: rgba(255, 255, 255, 0.82);
+        background: rgba(255, 255, 255, 0.88);
         padding: 1.4rem;
         border-radius: 22px;
-        box-shadow: 0 8px 28px rgba(45, 42, 50, 0.08);
+        box-shadow: 0 8px 28px rgba(15, 23, 42, 0.12);
         border: 1px solid rgba(255, 255, 255, 0.9);
         margin-bottom: 1rem;
+        color: #111827;
     }
 
+    /* Forcer les textes dans les cartes en noir */
+    .soft-card h1,
+    .soft-card h2,
+    .soft-card h3,
+    .soft-card p,
+    .soft-card label,
+    .soft-card span,
+    .soft-card div {
+        color: #111827 !important;
+    }
+
+    /* Textes Streamlit généraux */
+    .stMarkdown,
+    .stText,
+    .stCaption,
+    label,
+    p,
+    span,
+    div {
+        color: #111827;
+    }
+
+    /* Boutons */
+    div.stButton > button:first-child {
+        border-radius: 14px;
+        border: none;
+        padding: 0.6rem 1rem;
+        font-weight: 700;
+        background-color: #2563eb;
+        color: white;
+    }
+
+    div.stButton > button:first-child:hover {
+        background-color: #1d4ed8;
+        color: white;
+    }
+
+    /* Blocs métriques : distance, durée */
+    div[data-testid="stMetric"] {
+        background: rgba(255, 255, 255, 0.95);
+        padding: 1rem;
+        border-radius: 18px;
+        box-shadow: 0 4px 18px rgba(15, 23, 42, 0.10);
+        border: 1px solid rgba(15, 23, 42, 0.08);
+    }
+
+    div[data-testid="stMetricLabel"] {
+        color: #374151 !important;
+        font-weight: 700;
+    }
+
+    div[data-testid="stMetricValue"] {
+        color: #111827 !important;
+        font-weight: 800;
+    }
+
+    /* Carte résultat de prédiction */
     .result-card {
-        background: linear-gradient(135deg, #ffe08a 0%, #ffb86b 100%);
+        background: linear-gradient(135deg, #facc15 0%, #fb923c 100%);
         padding: 1.4rem;
         border-radius: 22px;
-        box-shadow: 0 8px 28px rgba(45, 42, 50, 0.12);
-        color: #2d2a32;
+        box-shadow: 0 8px 28px rgba(15, 23, 42, 0.18);
+        color: #111827;
         text-align: center;
         margin-top: 1rem;
+    }
+
+    .result-card div {
+        color: #111827 !important;
     }
 
     .result-price {
         font-size: 2.4rem;
         font-weight: 800;
         margin-top: 0.3rem;
+        color: #111827 !important;
     }
 
     .small-muted {
-        color: #6c6672;
+        color: #374151 !important;
         font-size: 0.9rem;
-    }
-
-    div.stButton > button:first-child {
-        border-radius: 14px;
-        border: none;
-        padding: 0.6rem 1rem;
-        font-weight: 700;
-    }
-
-    div[data-testid="stMetric"] {
-        background: rgba(255, 255, 255, 0.75);
-        padding: 1rem;
-        border-radius: 18px;
-        box-shadow: 0 4px 18px rgba(45, 42, 50, 0.06);
     }
     </style>
     """,
     unsafe_allow_html=True
 )
-
-
 # --------------------------------------------------
 # Fonctions
 # --------------------------------------------------
